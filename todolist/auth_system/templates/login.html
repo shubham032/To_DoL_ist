@@ -1,0 +1,20 @@
+<center style="background-color:chocolate; margin:10px; padding: 300px;">
+<h1>Login-Page</h1>
+
+{% if msg %}
+<p style="color: red;">{{ msg }}</p>
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="">Username</label> <br>
+    <input type="text" name="un"><br>
+
+    <label for="">Password</label><br>
+    <input type="password" name="pw"><br>
+
+    <input type="submit" value="Login" style="background-color: yellow;">
+
+</form>
+
+<p style="color: rgb(15, 4, 27);">If you don't have account<button style="background-color: yellow;"><a href="{% url 'signup' %}">Sign Up</a></button></p>
+</center>

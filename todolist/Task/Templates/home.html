@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block title %} Task |Home {% endblock title %}
+
+{% block content %}
+<button style="background-color: yellow;"><a href="{% url 'logout' %}">logout</a></button>
+<form action="{% url 'home' %}" method="post" 
+style="margin-top: 20px; margin-bottom: 20px; border: 1px solid black;
+ padding: 10px; background-color: lightseagreen;">
+   {% csrf_token %}
+   <label for="">Name</label>
+   <input type="text" name="name"  >
+
+   <label for="">Descriptions</label>
+   <input type="text" name="desc">
+
+   <input type="submit" value="Add Task" style="background-color: yellow;">
+   
+</form>
+<h2>Hii {{request.user.username}} here Your Tasks:</h2>
+
+{% for task in all_tasks %}
+   <div style="margin: auto; padding: auto; border-radius: 10px;
+    border: 1px solid black; padding: 10px; margin-top: 10px;
+      background-color: lightgreen;">
+   <h3>{{task.name}}</h3>
+   <p>{{ task.desc}}</p>
+   <button style="background-color: yellow;"><a href="{% url 'update' task.id %}">Update</a></button>
+   <button style="background-color: yellow;"><a href="{% url 'delete' task.id %}">Delete</a></button>
+   </div>
+{% endfor %}
+
+{% endblock content %}

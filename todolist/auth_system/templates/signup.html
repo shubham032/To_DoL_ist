@@ -1,0 +1,25 @@
+<center style="background-color:chocolate; margin:10px; padding: 300px;"><h1>Signup Page</h1>
+{% if msg %}
+    <p style="color: red;">{{ msg }}</p>
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="">Username</label> <br>
+    <input type="text" name="un"><br>
+
+    <label for="">Email</label><br>
+    <input type="email" name="em"><br>
+
+    <label for="">Password</label><br>
+    <input type="password" name="pw1"><br>
+
+    <label for="">Confirm Password</label><br>
+    <input type="password" name="pw2"><br>
+
+    <input type="submit" value="Signup">
+
+</form>
+
+<p style="color: rgb(15, 4, 27);">If you already have account 
+    <button style="background-color: yellow;"><a href="{% url 'login' %}">Login</a></button></p>
+</center>
